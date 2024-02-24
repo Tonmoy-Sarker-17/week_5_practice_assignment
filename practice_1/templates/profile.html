@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>this is Profile</h1>
+
+{% if messages %}
+    {% for m in messages %}
+    
+    <p class="bg-success p-3 text-white">{{m}}</p>
+    {% endfor %}
+    {% endif %}
+<br>
+{% if request.user.is_authenticated %}
+
+<p><a class="btn btn-danger" href="{%url 'pass_change'%}">Change your passsword</a></p>
+<p><a class="btn btn-warning" href="{%url 'pass_change2'%}">Change your passsword without old pass</a></p>
+{% endif %}
+
+{% endblock  %}
