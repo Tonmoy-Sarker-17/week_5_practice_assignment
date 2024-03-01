@@ -67,7 +67,7 @@ class DetailPostView(DetailView):
 
 
 def buy(request,id):
-    car = models.CarPost.objects.get(pk=id)
+    car = models.Post.objects.get(pk=id)
 
     if request.method == 'GET':
         car_form = forms.PostForm(request.POST)
@@ -78,5 +78,5 @@ def buy(request,id):
                 car.owner = request.user
                 car.quantity -= 1
                 car.save()
-            return redirect('home')
-    return redirect('home')
+            return redirect('homepage')
+    return redirect('homepage')

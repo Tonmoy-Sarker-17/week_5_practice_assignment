@@ -20,12 +20,12 @@
           Quantity: {{post.quantity}}
       </h4>
 
-      {% comment %} {% if request.user.is_authenticated %}
-      {% for fr in form %}
-            <a href="{% url 'buycar' fr.id %}">Buy This Car</a> 
+       {% if request.user.is_authenticated %}
+      
+            <a href="{% url 'buycar' post.id %}">Buy This Car</a> 
 
-      {% endfor %}
-      {% endif %} {% endcomment %}
+      
+      {% endif %} 
 
       </div>
     </div>
