@@ -4,7 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm,PasswordChangeForm
 from django.contrib.auth import authenticate,login,update_session_auth_hash,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from post.models import CarPost
+from post.models import Post
 
 
 def register(request):
@@ -40,7 +40,7 @@ def user_login(request):
         return render(request, 'register.html', {'form' : form, 'type' : 'Login'})
 @login_required
 def profile(request):
-    data=CarPost.objects.filter(author=request.user)
+    data=Post.objects.filter(author=request.user)
 
     return render(request, 'profile.html',{'data':data})
 

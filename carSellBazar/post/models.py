@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-class CarPost(models.Model):
+class Post(models.Model):
     tittle=models.CharField(max_length=50)
     price=models.IntegerField()
     quantity=models.IntegerField() 
@@ -17,7 +17,7 @@ class CarPost(models.Model):
         return self.tittle
     
 class Comment(models.Model):
-    post=models.ForeignKey(CarPost,on_delete=models.CASCADE,related_name='comments')
+    post=models.ForeignKey(Post,on_delete=models.CASCADE,related_name='comments')
     name=models.CharField(max_length=30)
     email=models.EmailField()
     body=models.TextField()

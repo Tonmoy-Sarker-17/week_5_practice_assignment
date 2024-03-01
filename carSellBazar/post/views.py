@@ -4,8 +4,6 @@ from . import models
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.views.generic import DetailView
-from django.urls import reverse_lazy
-from django.utils.decorators import method_decorator
 
 # Create your views here.
 @login_required
@@ -43,7 +41,7 @@ def delete_post(request,id):
     return redirect('homepage')
 
 class DetailPostView(DetailView):
-    model=models.CarPost
+    model=models.Post
     template_name='post_details.html'
     pk_url_kwarg='id'
 

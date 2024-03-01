@@ -1,9 +1,9 @@
 from django import forms
-from .models import CarPost,Comment
+from .models import Post,Comment
 
 class PostForm(forms.ModelForm):
     class Meta:
-        model = CarPost
+        model = Post
         exclude=['author']
         
 class CommentForm(forms.ModelForm):

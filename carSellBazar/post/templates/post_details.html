@@ -12,8 +12,9 @@
       </h4>
       <h4 class="card-text">
           Brand Name : 
-          <button class="btn btn-primary btn-sm m-2" disabled>{{post.category}}</button>
-          
+          {% for cat in post.category.all %}
+          <h4>{{cat.name}}</h4>
+          {% endfor %}          
       </h4>
       <h4 class="card-text">
           Quantity: {{post.quantity}}
