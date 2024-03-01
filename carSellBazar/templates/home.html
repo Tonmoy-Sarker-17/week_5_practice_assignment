@@ -31,13 +31,15 @@
       <div class="col-sm-4">
         <div class="card mx-2">
           <div class="card-body">
-            <img src="{{post.image.url}}" class="card-img-top" alt="...">
-            <h5 class="card-title">{{post.name}}</h5>
+            <img src="{{post.image.url}}" class="card-img-top" alt="..."> 
+            <h4 class="card-title p-2">{{post.tittle}}</h4>
             <h6 class="card-text">
                 Price : {{post.price}}
             </h6>
             <h6 class="card-text">
-                Brand Name : {{post.category}}
+                Brand Name : {% for cat in post.category.all %}
+                <button class="btn btn-primary btn-sm m-2" disabled>{{cat.name}}</button>
+                {% endfor %}
             </h6>
         
     

@@ -6,23 +6,25 @@
     <div class="card mx-2">
       <div class="card-body">
         <img src="{{post.image.url}}" class="card-img-top" alt="..." style="width:50%">
-        <h1 class="card-title">{{post.name}}</h1>
+        <h1 class="card-title">{{post.tittle}}</h1>
         <h4 class="card-text">
           Price : {{post.price}} tk
       </h4>
       <h4 class="card-text">
-          Brand Name : {{post.category}}
+          Brand Name : 
+          <button class="btn btn-primary btn-sm m-2" disabled>{{post.category}}</button>
+          
       </h4>
       <h4 class="card-text">
-          Quantity: {{post:quantity}}
+          Quantity: {{post.quantity}}
       </h4>
 
-      <a href="{%url 'detail_post' post.id%}" class="text-decoration-none" >Buy Now!</a>
+      {% comment %} {% if request.user.is_authenticated %}
+      {% for fr in form %}
+            <a href="{% url 'buycar' fr.id %}">Buy This Car</a> 
 
-        
-        {% endfor %}
-            
-        </p>
+      {% endfor %}
+      {% endif %} {% endcomment %}
 
       </div>
     </div>

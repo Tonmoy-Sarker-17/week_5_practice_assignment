@@ -3,7 +3,7 @@ from . import forms
 from . import models
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.views.generic import CreateView,UpdateView,DeleteView,DetailView
+from django.views.generic import DetailView
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 
@@ -67,7 +67,8 @@ class DetailPostView(DetailView):
         return context
 
 
-def buy(request, id):
+
+def buy(request,id):
     car = models.CarPost.objects.get(pk=id)
 
     if request.method == 'GET':
