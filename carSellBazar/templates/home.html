@@ -10,11 +10,11 @@
 </div>
 </div>
 
-<div class="p-4 m-2 bg-white"> 
+<div class="p-4 m-2 bg-white d-flex justify-content-around"> 
     <h5>All Categories</h5>
     
     <div class="form-check p-3 m-auto">{% for cat in category %}
-      <input type="radio" class="btn btn-check" name="options" id="option1" autocomplete="off">{{cat.id}}.
+      <input type="radio" class="btn btn-check" name="options" id="option1" autocomplete="off">  {{cat.id}}.
       <label class="btn btn-secondary" for="option5">
         <a class="text-decoration-none text-black" href="{%url 'category_wise_post' cat.slug%}">{{cat.name}} </a>
         
@@ -25,7 +25,7 @@
   </div>
 <div class="d-flex flex-wrap">
   
-  <div class="col-10"> 
+  <div class="col-12"> 
     <h4>{{data | length}} results found</h4>
     <div class="d-flex flex-wrap  px-5 pt-5">
       {% for post in data %}
@@ -35,7 +35,7 @@
             <img src="{{post.image.url}}" class="card-img-top" alt="..."> 
             <h4 class="card-title p-2">{{post.tittle}}</h4>
             <h6 class="card-text">
-                Price : {{post.price}}
+                Price : {{post.price}} /=
             </h6>
             <h6 class="card-text">
                 Brand Name : {% for cat in post.category.all %}

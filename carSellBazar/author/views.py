@@ -40,7 +40,7 @@ def user_login(request):
         return render(request, 'register.html', {'form' : form, 'type' : 'Login'})
 @login_required
 def profile(request):
-    data=Post.objects.filter(author=request.user)
+    data=Post.objects.filter(owner=request.user)
 
     return render(request, 'profile.html',{'data':data})
 

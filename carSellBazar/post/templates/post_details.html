@@ -10,12 +10,11 @@
         <h4 class="card-text">
           Price : {{post.price}} tk
       </h4>
-      <h4 class="card-text">
-          Brand Name : 
-          {% for cat in post.category.all %}
-          <h4>{{cat.name}}</h4>
+      <h5 class="card-text">
+          Brand Name :{% for cat in post.category.all %}
+          {{cat.name}}
           {% endfor %}          
-      </h4>
+      </h5>
       <h4 class="card-text">
           Quantity: {{post.quantity}}
       </h4>

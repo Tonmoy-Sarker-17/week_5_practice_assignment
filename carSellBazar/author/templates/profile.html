@@ -1,38 +1,41 @@
 {%extends 'base.html'%} {% load crispy_forms_tags %} {% block content %}
 
 <div>
-
-
-  <a class="bnt btn-primary text-decoration-none text-dark" href="{%url 'edit_profile'%}"><h1>Edit your profile</h1></a>
+  <a
+    class="bnt btn-primary text-decoration-none text-dark"
+    href="{%url 'edit_profile'%}"
+  >
+    <h1>Edit your profile</h1>
+  </a>
 </div>
 {% csrf_token %}
 
-<div class="d-flex flex-wrap  px-5 pt-5">
+<div class="d-flex flex-wrap px-5 pt-5">
   {% for post in data %}
   <div class="col-sm-4">
     <div class="card mx-2">
       <div class="card-body">
-        <img src="{{post.image.url}}" class="card-img-top" alt="..."> 
+        {% if post.image %}
+        <img src="{{post.image.url}}" class="card-img-top" alt="..." />
+        {% endif %}
         <h4 class="card-title p-2">{{post.tittle}}</h4>
+        <h6 class="card-text">Price : {{post.price}}</h6>
         <h6 class="card-text">
-            Price : {{post.price}}
+          Brand Name : {% for cat in post.category.all %}
+          <button class="btn btn-primary btn-sm m-2" disabled>
+            {{cat.name}}
+          </button>
+          {% endfor %}
         </h6>
-        <h6 class="card-text">
-            Brand Name : {% for cat in post.category.all %}
-            <button class="btn btn-primary btn-sm m-2" disabled>{{cat.name}}</button>
-            {% endfor %}
-        </h6>
-    
 
-        <a href="{%url 'detail_post' post.id%}" class="text-decoration-none" >View Details..</a>
-
-
+        <a href="{%url 'detail_post' post.id%}" class="text-decoration-none">
+          View Details..
+        </a>
       </div>
     </div>
   </div>
 
   {% endfor %}
 </div>
-
 
 {% endblock %}

@@ -66,17 +66,21 @@ class DetailPostView(DetailView):
 
 
 
-def buy(request,id):
+@login_required
+def buy(request, id):
     car = models.Post.objects.get(pk=id)
 
-    if request.method == 'GET':
-        car_form = forms.PostForm(request.POST)
-        if car_form.is_valid():
-            if car.owner == request.user:
-                messages.warning(request, "You already own this car")
-            else:
-                car.owner = request.user
-                car.quantity -= 1
-                car.save()
+    if car.owner.filter(pk=request.user.id).exists():
+        messages.warning(request, "You already own this car")
+    else:
+        if car.quantity > 0:
+            car.owner.add(request.user)
+            car.quantity -= 1
+            car.save()
+            messages.success(request, "You have successfully purchased this car!")
             return redirect('homepage')
+        else:
+            messages.error(request, "This car is no longer available")
+        return redirect('detail_post', id=id) 
+
     return redirect('homepage')

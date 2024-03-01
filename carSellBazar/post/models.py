@@ -10,6 +10,7 @@ class Post(models.Model):
     quantity=models.IntegerField() 
     category=models.ManyToManyField(Category)
     author=models.ForeignKey(User, on_delete=models.CASCADE) 
+    owner=models.ManyToManyField(User,blank=True,related_name='car') 
     image= models.ImageField(upload_to='uploads/',blank=True,null=True)
 
 
