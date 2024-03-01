@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="col-sm-12">
+    <div class="card mx-2">
+      <div class="card-body">
+        <img src="{{post.image.url}}" class="card-img-top" alt="..." style="width:50%">
+        <h1 class="card-title">{{post.name}}</h1>
+        <h4 class="card-text">
+          Price : {{post.price}} tk
+      </h4>
+      <h4 class="card-text">
+          Brand Name : {{post.category}}
+      </h4>
+      <h4 class="card-text">
+          Quantity: {{post:quantity}}
+      </h4>
+
+      <a href="{%url 'detail_post' post.id%}" class="text-decoration-none" >Buy Now!</a>
+
+        
+        {% endfor %}
+            
+        </p>
+
+      </div>
+    </div>
+  </div>
+  <div class="card m-2">
+    <h5 class="p-3">Total Comments : {{comments|length}}</h5>
+           {% for comment in comments %}
+<div class="card-body border m-2">
+       <h6>user: {{comment.name}} ; {{comment.created_on}}</h6>
+       <p>comment: {{comment.body}}</p>
+    </div>       
+    {% endfor %}
+
+  </div>
+
+  <div class="card m-2">
+    <div class="card-body">
+        <form method="Post">
+            {% csrf_token %}
+            <h1>this is add comment here</h1>
+        {{comment_form | crispy}}
+        
+        <button class="btn btn-warning">Submit</button>
+        </form>
+    </div>
+  </div>
+
+{% endblock  %}
